@@ -7,6 +7,7 @@ var BOTTLE_SIZE = 750; // A standard bottle of wine is 750ml
 var SHOT_SIZE = 1.5; // An American shot is 1.5oz
 var ML_PER_OZ = 29.5735; // ML to OZ conversion factor
 var elapsed = 0; // The amount of integer minutes that have passed.
+var players = 1; // Default to one player.
 
 /////////
 // Set up a minutely timer.
