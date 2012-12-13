@@ -26,7 +26,7 @@ function update(){
 	if (!countdown){ // a minute has passed if the countdown is zero
 		min_elapsed++; 
 		countdown = interval;
-		//drinkNow(); // Tell the user it's time to drink.
+		drinkNow(); // Tell the user it's time to drink.
 	}
 	else{
 		countdown--;
@@ -64,8 +64,12 @@ function toOz(shots){
 // Triggers UI sequences to indicate that it's time to drink.
 // Perhaps change background color? Play some crazy sounds?
 /////////
-function drinknow(){
+function drinkNow(){
+	// Do a bunch of stuff here.
+	// Change the background color
 	backFlash(); 
+	// Now play a sound or something
+	// Now change the song the chromeless player is playing
 
 }
 
