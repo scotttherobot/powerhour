@@ -6,24 +6,34 @@
 var BOTTLE_SIZE = 750; // A standard bottle of wine is 750ml
 var SHOT_SIZE = 1.5; // An American shot is 1.5oz
 var ML_PER_OZ = 29.5735; // ML to OZ conversion factor
-var elapsed = 0; // The amount of integer minutes that have passed.
+var min_elapsed = 0; // The amount of integer minutes that have passed.
+var interval = 5; // The interval to count down from, in seconds.
+var countdown = interval; // Counting down from 60
 var players = 1; // Default to one player.
+var paused = 1; // Start with the timer not going
 
 /////////
 // Set up a minutely timer.
 /////////
 window.addEvent('domready', function(){
-	setInterval(update(), 1000);
+	setInterval(function(){update()},1000); // A second has passed. Update the countdown.
 });
 
 /////////
-// I would imagine that this is where the magic would happen
+// I would imagine that this is where the magic would happen.
 /////////
 function update(){
-	elapesed++; // A minute has passed
-	drinkNow(); // Tell the user it's time to drink.
+	if (!countdown){ // a minute has passed if the countdown is zero
+		min_elapsed++; 
+		countdown = interval;
+		//drinkNow(); // Tell the user it's time to drink.
+	}
+	else{
+		countdown--;
+	}
 	updateUI(); // Show the new data
-	countdown(); // start a new countdown.
+	
+	//console.log(countdown);
 }
 
 /////////
@@ -31,7 +41,7 @@ function update(){
 // on the number of shots provided.
 /////////
 function toBottles(shots){
-	return toML(shots) / BOTTLE_SIZE;
+	return toMl(shots) / BOTTLE_SIZE;
 }
 
 /////////
@@ -39,7 +49,15 @@ function toBottles(shots){
 // of shots provided
 /////////
 function toMl(shots){
-	return shots * ML_PER_OZ;
+	return toOz(shots) * ML_PER_OZ;
+}
+
+/////////
+// Returns the OZ consumed based on the number
+// of shots provided
+/////////
+function toOz(shots){
+	return shots * SHOT_SIZE;
 }
 
 /////////
@@ -56,16 +74,12 @@ function drinknow(){
 // Updates all of the UI elements.
 /////////
 function updateUI(){
-
+	$('timer').innerText = countdown;
+	$('shots').innerText = min_elapsed;
+	$('bottles').innerText = toBottles(min_elapsed);
+	$('ml').innerText = toMl(min_elapsed);
+	$('oz').innerText = toOz(min_elapsed);
 }	
-
-/////////
-// Manages the countdown UI elements.
-// When it is called, the countdown label is set to 60 and begins counting to 0
-/////////
-function countdown(){
-
-}
 
 /////////
 // Rearranges UI elements to troll the drunks. 

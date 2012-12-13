@@ -30,3 +30,8 @@ user interaction can be required to confirm that the shot was taken.
 	* shots per n players
 	* ml per n players
 	* bottles per n players
+* Music Playback
+	* playback from chromeless embedded YouTube player
+	* plays from YouTube playlists
+	* preset "stations" available (top 40, dance, house, wubs/dubs/lubs, classy instrumental, etc.)
+	* automatically advances the song each minute, with a little transition alert
