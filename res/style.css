@@ -13,3 +13,27 @@
 #oz{
 	font-family: 'Knewave';
 }
+#status{
+	font-family: 'Knewave';
+	font-size: 30;
+	cursor: pointer;
+}
+#overlay{
+	position: absolute;
+	left: 0px;
+	top: 25%;
+	width: 100%;
+	height: 100%;
+	font-family: 'Knewave';
+	font-size: 200;
+}
+#interval{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	cursor: pointer;
+}
+h1{
+	font-family: 'Knewave';
+	font-size: 50;
+}

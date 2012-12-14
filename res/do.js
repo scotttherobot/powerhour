@@ -16,6 +16,36 @@ var paused = 1; // Start with the timer not going
 // Set up a minutely timer.
 /////////
 window.addEvent('domready', function(){
+
+	$('overlay').hide();
+	$('status').addEvent('click', function(){
+		if(paused){
+			paused = 0;
+			updateUI();
+		}
+		else{
+			paused = 1;
+			updateUI();
+		}
+	});
+	$('interval').addEvent('click', function(){
+		if(interval == 5){
+			interval = 60;
+		}
+		else if(interval == 60){
+			interval = 90;
+		}
+		else if(interval == 90){
+			interval = 120;
+		}
+		else if(interval == 120){
+			interval = 5;
+		}
+		countdown = interval;
+		updateUI();
+	});
+
+	updateUI();
 	setInterval(function(){update()},1000); // A second has passed. Update the countdown.
 });
 
@@ -23,13 +53,15 @@ window.addEvent('domready', function(){
 // I would imagine that this is where the magic would happen.
 /////////
 function update(){
-	if (!countdown){ // a minute has passed if the countdown is zero
-		min_elapsed++; 
-		countdown = interval;
-		drinkNow(); // Tell the user it's time to drink.
-	}
-	else{
-		countdown--;
+	if(!paused){
+		if (!countdown){ // a minute has passed if the countdown is zero
+			min_elapsed++; 
+			countdown = interval;
+			drinkNow(); // Tell the user it's time to drink.
+		}
+		else{
+			countdown--;
+		}
 	}
 	updateUI(); // Show the new data
 	
@@ -68,6 +100,10 @@ function drinkNow(){
 	// Do a bunch of stuff here.
 	// Change the background color
 	backFlash(); 
+	// Show the "drink now" message
+	$('overlay').setStyle('color', '#'+Math.floor(Math.random()*16777215).toString(16));
+	$('overlay').show();
+	setTimeout(function(){$('overlay').hide()},250);
 	// Now play a sound or something
 	// Now change the song the chromeless player is playing
 
@@ -83,7 +119,17 @@ function updateUI(){
 	$('bottles').innerText = toBottles(min_elapsed);
 	$('ml').innerText = toMl(min_elapsed);
 	$('oz').innerText = toOz(min_elapsed);
+	if(paused){
+		$('status').innerText = 'Game Paused.';
+		$('status').setStyle('color', '#'+Math.floor(Math.random()*16777215).toString(16));
+	}
+	else{
+		$('status').innerText = 'Game In Progress!';
+	}
+	$('interval').innerText = 'Game interval is ' + interval + ' seconds. Click to change.';
 }	
+
+
 
 /////////
 // Rearranges UI elements to troll the drunks. 
