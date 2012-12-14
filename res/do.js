@@ -12,6 +12,7 @@ var countdown = interval; // Counting down from 60
 var players = 1; // Default to one player.
 var paused = 1; // Start with the timer not going
 
+
 /////////
 // Set up a minutely timer.
 /////////
@@ -22,10 +23,12 @@ window.addEvent('domready', function(){
 		if(paused){
 			paused = 0;
 			updateUI();
+			$('player').playVideo();
 		}
 		else{
 			paused = 1;
 			updateUI();
+			$('player').pauseVideo();
 		}
 	});
 	$('interval').addEvent('click', function(){
@@ -47,6 +50,7 @@ window.addEvent('domready', function(){
 
 	updateUI();
 	setInterval(function(){update()},1000); // A second has passed. Update the countdown.
+	youTube();
 });
 
 /////////
@@ -58,6 +62,7 @@ function update(){
 			min_elapsed++; 
 			countdown = interval;
 			drinkNow(); // Tell the user it's time to drink.
+			$('player').nextVideo(); // Load the next video in the playlist.
 		}
 		else{
 			countdown--;
@@ -149,4 +154,18 @@ function backFlash(){
 
 }
 
+function youTube(){
+	var params = { allowScriptAccess: "always" };
+    var atts = { id: "player" };
+    swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3",
+                       "player", "425", "356", "8", null, null, params, atts);
+}
+function onYouTubePlayerReady(playerId) {
+      //
+      $('player').cuePlaylist({listType:'playlist',
+      						   list:'PL2BD59BDF0A7B72F3',
+      						   index: 0,
+      						   startSeconds: 0,
+      						   suggestedQuality: 'default'});	
+}
 }
