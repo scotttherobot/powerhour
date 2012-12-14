@@ -12,6 +12,9 @@ var countdown = interval; // Counting down from 60
 var players = 1; // Default to one player.
 var paused = 1; // Start with the timer not going
 
+/////// YouTube stuff
+var playlist = 'PL2BD59BDF0A7B72F3';
+var hidden = 0; // Is the YouTube viewer hidden?
 
 /////////
 // Set up a minutely timer.
@@ -19,6 +22,40 @@ var paused = 1; // Start with the timer not going
 window.addEvent('domready', function(){
 
 	$('overlay').hide();
+	$('size').addEvent('click', function(){
+		SHOT_SIZE = prompt("Shot size (Oz)", SHOT_SIZE);
+	});
+	$('wine').addEvent('click', function(){
+		BOTTLE_SIZE = prompt("Bottle size (Ml)", BOTTLE_SIZE);
+	});
+	$('players').addEvent('click', function(){
+		players = prompt("Number of players", players);
+	});
+	
+	$('hide').addEvent('click', function(){
+		if(!hidden){
+			$('player').hide();
+			$('bar').setStyle('bottom', 5);
+			hidden = 1;
+		}
+		else{
+			$('player').show();
+			$('bar').setStyle('bottom', 360);
+			hidden = 0;
+		}
+	});
+	$('mute').addEvent('click', function(){
+		if($('player').isMuted()){
+			$('player').unMute();
+		}
+		else{
+			$('player').mute();
+		}
+	});
+	$('plid').addEvent('click', function(){
+		playlist = prompt("Please input a YouTube playlist ID", playlist);
+		youTube();
+	});
 	$('status').addEvent('click', function(){
 		if(paused){
 			paused = 0;
@@ -163,7 +200,7 @@ function youTube(){
 function onYouTubePlayerReady(playerId) {
       //
       $('player').cuePlaylist({listType:'playlist',
-      						   list:'PL2BD59BDF0A7B72F3',
+      						   list: playlist,
       						   index: 0,
       						   startSeconds: 0,
       						   suggestedQuality: 'default'});	

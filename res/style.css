@@ -33,7 +33,31 @@
 	right: 0;
 	cursor: pointer;
 }
+#bar{
+	position: absolute;
+	left: 10;
+	bottom: 360;
+	cursor: pointer;
+}
+#bar *{
+	display: inline-block;
+}
+#player{
+	position: absolute;
+	left: 5;
+	bottom: 5;
+}
+
 h1{
 	font-family: 'Knewave';
 	font-size: 50;
+}
+#config{
+	position: relative;
+	top: -30px;
+	font-size: 12;
+	cursor: pointer;
+}
+.button{
+	display: inline-block;
 }
