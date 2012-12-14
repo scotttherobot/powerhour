@@ -1,19 +1,10 @@
-#timer{
+.info{
 	font-family: 'Knewave';
-}
-#shots{
-	font-family: 'Knewave';
-}
-#bottles{
-	font-family: 'Knewave';
-}
-#ml{
-	font-family: 'Knewave';
-}
-#oz{
-	font-family: 'Knewave';
+	font-size: 20;
 }
 #status{
+	border: 1px solid black;
+	width: 100px;
 	font-family: 'Knewave';
 	font-size: 30;
 	cursor: pointer;
@@ -26,6 +17,7 @@
 	height: 100%;
 	font-family: 'Knewave';
 	font-size: 200;
+	z-index: 20;
 }
 #interval{
 	position: absolute;
@@ -47,17 +39,41 @@
 	left: 5;
 	bottom: 5;
 }
-
-h1{
-	font-family: 'Knewave';
-	font-size: 50;
-}
 #config{
+	width: 300px;
+	border: 1px solid black;
 	position: relative;
 	top: -30px;
 	font-size: 12;
 	cursor: pointer;
 }
+#instructions{
+	border: 0px solid black;
+	position: absolute;
+	top: 5;
+	right: 5;
+	width: 150px;
+	text-align: left;
+	padding-right: 20px;
+}
 .button{
 	display: inline-block;
+}
+body{
+	font-family: 'Playball';
+}
+h1{
+	font-family: 'Knewave';
+	font-size: 50;
+}
+table, th, td{
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 500px;
+	height: 50px;
+	text-align: center;
+}
+ol{
+	margin-left: -20px;
+	margin-top: -20px;
 }

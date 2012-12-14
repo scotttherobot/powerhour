@@ -20,14 +20,53 @@ PowerHour
 <div id="config">
 <div id="size" class="button">Shot Size</div> |
 <div id="wine" class="button">Bottle Size</div> |
-<div id="players" class="button">Players</div> 
+<div id="players" class="button">Players</div> |
+<div id="message" class="button">Message</div> |
+<div id="external" class="button">External Alert</div> 
 </div>
 
-Countdown: <div id="timer">0</div>
-Shots: <div id="shots">0</div>
-Bottles: <div id="bottles">0</div>
-Ml: <div id="ml">0</div>
-Oz: <div id="oz">0</div>
+<div id="instructions">
+<h4> How to Play: </h4>
+<ol> 
+<li> Open wine. </li>
+<li> Find shot glass. </li>
+<li> Press play. </li>
+<li> ??? </li>
+<li> Profit. </li>
+</ol>
+</div>
+
+
+<table>
+<col width="50%">
+<col width="50%">
+<tr>
+<th>elapsed time</th>
+<th>countdown</th>
+</tr>
+<tr>
+<td><div id="elapsed" class="info">0</div> </td>
+<td><div id="timer" class="info">0</div> </td>
+</tr>
+</table>
+<table>
+<col width="25%">
+<col width="25%">
+<col width="25%">
+<col width="25%">
+<tr>
+<th>shots</th>
+<th>bottles</th>
+<th>ml</th>
+<th>oz</th>
+</tr>
+<tr>
+<td><div id="shots" class="info">0</div> </td>
+<td><div id="bottles" class="info">0</div> </td>
+<td><div id="ml" class="info">0</div> </td>
+<td><div id="oz" class="info">0</div> </td>
+</tr>
+</table>
 <br>
 <div id="status">0</div>
 <div id="interval">0</div>
