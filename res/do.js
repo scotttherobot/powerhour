@@ -45,12 +45,16 @@ window.addEvent('domready', function(){
 	
 	$('hide').addEvent('click', function(){
 		if(!hidden){
-			$('player').hide();
+			//$('player').hide();
+			$('player').setStyle('width', 1);
+			$('player').setStyle('height', 1);
 			$('bar').setStyle('bottom', 5);
 			hidden = 1;
 		}
 		else{
-			$('player').show();
+			//$('player').show();
+			$('player').setStyle('width', 425);
+			$('player').setStyle('height', 356);
 			$('bar').setStyle('bottom', 360);
 			hidden = 0;
 		}
